@@ -33,6 +33,7 @@ FROM `sql-covid-data-exploration.covid_data.covid_deaths`
 WHERE continent IS NOT NULL 
 --Group By date
 ORDER BY 1,2
+```
 
 ### Population Analysis
 
@@ -46,12 +47,40 @@ ORDER BY 1,2
 3. Replace any placeholders with your desired values.
 4. Run the query.
 
+```
 -- Population Analysis
 SELECT location, population
 FROM `sql-covid-data-exploration.covid_data.covid_deaths` 
 WHERE continent IS NOT NULL 
 GROUP BY location, population
 ORDER BY population DESC
+```
+### Population Infection Analysis
+
+**Purpose**: Analyze countries with the highest infection rates compared to their population.
+
+**Usage**: This query provides insights into countries with the highest COVID-19 infection rates relative to their population.
+
+**Directions**: 
+1. Open your SQL editor (e.g., Google BigQuery), this code only runs in BigQuery.
+2. Copy the SQL query provided below.
+3. Run the query.
+
+```
+SELECT
+    location,
+    population,
+    MAX(total_cases) as highest_infection_count,
+    MAX((total_cases/population)) * 100 as percent_population_infected
+FROM
+    `sql-covid-data-exploration.covid_data.covid_deaths`
+-- WHERE location LIKE '%Mexico%'
+GROUP BY
+    location,
+    population
+ORDER BY
+    percent_population_infected DESC
+```
 
 ### Vaccination Trends Over Time
 
@@ -64,12 +93,13 @@ ORDER BY population DESC
 1. Open your SQL editor (e.g., Google BigQuery).
 2. Copy the SQL query provided below.
 3. Run the query.
-
+```
 -- Vaccination Trends Over Time
 SELECT date, location, new_vaccinations
 FROM `sql-covid-data-exploration.covid_data.covid_vaccinations` 
 WHERE continent IS NOT NULL 
 ORDER BY date, location
+```
 
 ### Continent-Level Analysis
 
@@ -83,13 +113,14 @@ ORDER BY date, location
 2. Copy the SQL query provided below.
 3. Run the query.
 
+```
 -- Continent-Level Analysis
 SELECT continent, SUM(total_cases) as total_cases, SUM(total_deaths) as total_deaths
 FROM `sql-covid-data-exploration.covid_data.covid_deaths` 
 WHERE continent IS NOT NULL 
 GROUP BY continent
 ORDER BY total_cases DESC
-
+```
 
 ### Custom Analysis
 
@@ -103,11 +134,13 @@ ORDER BY total_cases DESC
 3. Modify the query to suit your analysis needs.
 4. Run the query.
 
+```
 -- Custom Analysis
 -- Modify this query to perform your custom analysis.
 SELECT ...
 FROM ...
 WHERE ...
+```
 
 
 ## Contributing
