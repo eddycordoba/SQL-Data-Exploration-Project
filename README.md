@@ -7,11 +7,11 @@ This repository contains SQL queries for exploring and analyzing COVID-19 data f
 ## Table of Contents
 
 1. [Queries](#queries)
-2. [Usage](#usage)
-3. [Examples](#examples)
-4. [Contributing](#contributing)
-5. [License](#license)
+2. [Contributing](#contributing)
+3. [License](#license)
 
+<a name="queries"></a>
+## Queries
 
 ### Total Cases and Deaths Analysis
 
@@ -142,12 +142,12 @@ FROM ...
 WHERE ...
 ```
 
-
+<a name="contributing"></a>
 ## Contributing
 
 Feel free to contribute to this project by adding new queries, improving existing ones, or enhancing the documentation. Pull requests are welcome!
 
-
+<a name="license"></a>
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
